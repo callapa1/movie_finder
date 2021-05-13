@@ -45,7 +45,7 @@
                 type="text"
                 name="movie_id"
                 id=""
-                value="<?=$_POST['movie_id']?>"
+                value="<?= empty($_POST['movie_id']) ? '' : $_POST['movie_id']; ?>"
             >
         </label>
         <button
@@ -62,7 +62,8 @@
                 type="text"
                 name="keywords"
                 id=""
-                value="<?=$_POST['keywords']?>">
+                value="<?= empty($_POST['keywords']) ? '' : $_POST['keywords']; ?>"
+            >
         </label>
         <button
             type="submit"
