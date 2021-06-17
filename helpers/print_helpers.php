@@ -8,7 +8,7 @@ Class PrintHelpers {
         $output .= self::print_poster($movie['poster']);
         $output .= self::print_description($movie['description']);
         $output .= self::print_year($movie['year']);
-        $output .= self::print_actors($movie['actors']);
+        $output .= self::print_actors_from_movie_id($movie['id']);
         $output .= "</ul>";
 
         echo $output;
@@ -46,6 +46,19 @@ Class PrintHelpers {
 
         $string = "<ul><b>Actors:</b>";
         foreach($actors as $actor) {
+            $string .= "<li>" .$actor['name']. "</li>";
+        }
+        $string .= "</ul>";
+        return $string;
+    }
+
+    static function print_actors_from_movie_id($movie_id) {
+        $result = DbHelpers::fetch_actors_from_movie_id($movie_id);
+
+        if(empty($result)) return;
+
+        $string = "<ul><b>Actors:</b>";
+        foreach($result as $actor) {
             $string .= "<li>" .$actor['name']. "</li>";
         }
         $string .= "</ul>";
