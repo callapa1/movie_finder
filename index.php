@@ -3,33 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <title>Movie Finder</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <style>
-        ul {
-            list-style-type: none;
-            margin-block-start: 0;
-            padding-inline-start: 0;
-        }
-        form {
-            margin: 10px;
-        }
-        #results {
-            display: flex;
-            width: 100%;
-            flex-flow: row wrap;
-        }
-        #movie-item {
-            display: block;
-            flex: 0 0 25%;
-            text-align: center;
-        }
-        #description {
-            max-width: 300px;
-            padding-left: 40px;
-        }
-    </style>
-    
+<body>    
     <form action="" method="POST">
         <button
             type="submit"
@@ -71,10 +47,21 @@
             >Search
         </button>
     </form>
+    <div id="page">
+        <form action="" method="POST">
+        <input type="hidden" name="checkpoint" value="4" />
+        <button name="next_page">>></button>
+        </form>
+    </div>
     <div id="results">
         <?php
         include_once 'process.php';
         ?>    
+    </div>
+    <div id="page">
+        <form action="" method="POST">
+        <button name="next_page">>></button>
+        </form>
     </div>
 </body>
 </html>
