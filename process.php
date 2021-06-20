@@ -16,12 +16,31 @@
     //     }
     // }
     
-    if (isset($_POST['all_movies'])) {
-        $movies = DbHelpers::fetch_movies_four();
+    if (isset($_GET['all_movies'])) {
+        $result = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT 0,4");
+        $number_of_results = mysqli_num_rows($result);
+        $results_per_page = 4;
 
-        foreach($movies as $movie) {
+        if (!isset($_GET['page'])){
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        $this_page_first_result = ($page-1) * $results_per_page;
+        // $movies = DbHelpers::fetch_movies_four();
+        $no_of_pages = ceil($number_of_results / $results_per_page);
+        for ($page=1 ; $page<=$no_of_pages ; $page++) {
+            echo '<a href="index.php?page=' . $page . '">' . $page . '</a>';
+        }
+
+        $movies_sql = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT " . $this_page_first_result .",". $results_per_page);
+        while($movie = mysqli_fetch_array($movies_sql)) {
             PrintHelpers::print_movie($movie);
         }
+
+        // foreach($movies_sql as $movie) {
+        //     PrintHelpers::print_movie($movie);
+        // }
     }
 
     if (isset($_POST['next_page'])) {

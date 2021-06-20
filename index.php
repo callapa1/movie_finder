@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>    
-    <form action="" method="POST">
+    <form action="" method="GET">
         <button
             type="submit"
             name="all_movies"
@@ -47,21 +47,21 @@
             >Search
         </button>
     </form>
-    <div id="page">
+    <!-- <div id="page">
         <form action="" method="POST">
         <input type="hidden" name="checkpoint" value="4" />
         <button name="next_page">>></button>
         </form>
-    </div>
+    </div> -->
     <div id="results">
         <?php
         include_once 'process.php';
         ?>    
     </div>
-    <div id="page">
+    <!-- <div id="page">
         <form action="" method="POST">
         <button name="next_page">>></button>
         </form>
-    </div>
+    </div> -->
 </body>
 </html>

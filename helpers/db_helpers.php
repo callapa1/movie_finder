@@ -12,7 +12,7 @@ Class DbHelpers {
     }
 
     static function fetch_movies_four($checkpoint = 0){
-        $movies_sql = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT 4 OFFSET $checkpoint");
+        $movies_sql = $GLOBALS['conn']->query("SELECT * FROM movies");
         $indexed = [];
 
         while($row = $movies_sql->fetch_assoc()){
