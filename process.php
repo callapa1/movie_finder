@@ -22,7 +22,7 @@
         $result = $GLOBALS['conn']->query("SELECT * FROM movies");
         $number_of_results = mysqli_num_rows($result);
 
-        if (!isset($_GET['all_movies'])){
+        if ($_GET['all_movies'] == ""){
             $page = 1;
         } else {
             $page = $_GET['all_movies'];
@@ -38,10 +38,6 @@
         while($movie = mysqli_fetch_array($movies_sql)) {
             PrintHelpers::print_movie($movie);
         }
-
-        // foreach($movies_sql as $movie) {
-        //     PrintHelpers::print_movie($movie);
-        // }
     }
 
     if (isset($_POST['next_page'])) {
