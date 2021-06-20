@@ -17,20 +17,21 @@
     // }
     
     if (isset($_GET['all_movies'])) {
-        $result = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT 0,4");
-        $number_of_results = mysqli_num_rows($result);
+        // Rows
         $results_per_page = 4;
+        $result = $GLOBALS['conn']->query("SELECT * FROM movies");
+        $number_of_results = mysqli_num_rows($result);
 
-        if (!isset($_GET['page'])){
+        if (!isset($_GET['all_movies'])){
             $page = 1;
         } else {
-            $page = $_GET['page'];
+            $page = $_GET['all_movies'];
         }
         $this_page_first_result = ($page-1) * $results_per_page;
         // $movies = DbHelpers::fetch_movies_four();
         $no_of_pages = ceil($number_of_results / $results_per_page);
         for ($page=1 ; $page<=$no_of_pages ; $page++) {
-            echo '<a href="index.php?page=' . $page . '">' . $page . '</a>';
+            echo '<a href="index.php?all_movies=' . $page . '">' . $page . '</a>';
         }
 
         $movies_sql = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT " . $this_page_first_result .",". $results_per_page);
