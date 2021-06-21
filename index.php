@@ -47,6 +47,35 @@
             >Search
         </button>
     </form>
+    <nav class="pagination">
+        <div>
+            <?php
+                include_once './db.php';
+                $result = $GLOBALS['conn']->query("SELECT * FROM movies");
+                $number_of_results = mysqli_num_rows($result);
+                $results_per_page = 4;
+                $this_page_first_result = ($page-1) * $results_per_page;
+                $no_of_pages = ceil($number_of_results / $results_per_page);    
+
+                if (isset($_GET['all_movies'])) {
+
+                    if ($_GET['all_movies'] == ""){
+                        $page = 1;
+                    } else {
+                        $page = $_GET['all_movies'];
+                    }
+                    
+                    for ($p=1 ; $p <= $no_of_pages ; $p++) {
+                        if ($p == $page) {
+                            echo '<a class="active" href="index.php?all_movies=' . $p . '">' . $p . '</a>';
+                        } else {
+                            echo '<a href="index.php?all_movies=' . $p . '">' . $p . '</a>';
+                        }
+                    }
+                }
+            ?>
+        </div>
+    </nav>
     <div id="results">
         <?php
         include_once 'process.php';

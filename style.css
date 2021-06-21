@@ -20,3 +20,22 @@ form {
   max-width: 300px;
   padding-left: 40px;
 }
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: #13a782;
+  color: white;
+}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
