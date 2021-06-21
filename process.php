@@ -7,14 +7,6 @@
     // For testing only
     // $data = file_get_contents("movies.json");
     // $movies = json_decode($data,true)['movies'];
-
-    // if (isset($_POST['all_movies'])) {
-    //     $movies = DbHelpers::fetch_movies();
-
-    //     foreach($movies as $movie) {
-    //         PrintHelpers::print_movie($movie);
-    //     }
-    // }
     
     if (isset($_GET['all_movies'])) {
         // Rows
@@ -28,7 +20,6 @@
             $page = $_GET['all_movies'];
         }
         $this_page_first_result = ($page-1) * $results_per_page;
-        // $movies = DbHelpers::fetch_movies_four();
         $no_of_pages = ceil($number_of_results / $results_per_page);
         for ($page=1 ; $page<=$no_of_pages ; $page++) {
             echo '<a href="index.php?all_movies=' . $page . '">' . $page . '</a>';
