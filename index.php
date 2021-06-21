@@ -47,21 +47,10 @@
             >Search
         </button>
     </form>
-    <!-- <div id="page">
-        <form action="" method="POST">
-        <input type="hidden" name="checkpoint" value="4" />
-        <button name="next_page">>></button>
-        </form>
-    </div> -->
     <div id="results">
         <?php
         include_once 'process.php';
         ?>    
     </div>
-    <!-- <div id="page">
-        <form action="" method="POST">
-        <button name="next_page">>></button>
-        </form>
-    </div> -->
 </body>
 </html>
