@@ -7,7 +7,7 @@
     // For testing only
     // $data = file_get_contents("movies.json");
     // $movies = json_decode($data,true)['movies'];
-    
+
     if (isset($_GET['all_movies'])) {
         // Rows
         $results_per_page = 4;
@@ -27,13 +27,6 @@
 
         $movies_sql = $GLOBALS['conn']->query("SELECT * FROM movies LIMIT " . $this_page_first_result .",". $results_per_page);
         while($movie = mysqli_fetch_array($movies_sql)) {
-            PrintHelpers::print_movie($movie);
-        }
-    }
-
-    if (isset($_POST['next_page'])) {
-        $movies = DbHelpers::fetch_movies_four(4);
-        foreach($movies as $movie) {
             PrintHelpers::print_movie($movie);
         }
     }

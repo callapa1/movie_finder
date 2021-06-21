@@ -5,7 +5,7 @@
     <title>Movie Finder</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>    
+<body>
     <form action="" method="GET">
         <button
             type="submit"
@@ -50,7 +50,7 @@
     <div id="results">
         <?php
         include_once 'process.php';
-        ?>    
+        ?>
     </div>
 </body>
 </html>
